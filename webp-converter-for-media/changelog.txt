@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 6.1.1 (2024-10-02) =
+* `[Changed]` Bulk Optimization of Images section
+
 = 6.1.0 (2024-09-13) =
 * `[Removed]` Filter `webpc_supported_source_directory`
 * `[Fixed]` Handling of excluded directories when uploading new images
