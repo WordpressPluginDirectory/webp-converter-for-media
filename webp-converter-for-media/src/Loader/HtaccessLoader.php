@@ -12,6 +12,7 @@ use WebpConverter\Settings\Option\ExtraFeaturesOption;
 use WebpConverter\Settings\Option\HtaccessRewriteOutputOption;
 use WebpConverter\Settings\Option\HtaccessRewriteParentOption;
 use WebpConverter\Settings\Option\HtaccessRewritePathOption;
+use WebpConverter\Settings\Option\HtaccessRewriteFlagRedirectOption;
 use WebpConverter\Settings\Option\HtaccessRewriteRootOption;
 use WebpConverter\Settings\Option\RewriteInheritanceOption;
 use WebpConverter\Settings\Option\SupportedExtensionsOption;
@@ -254,6 +255,7 @@ class HtaccessLoader extends LoaderAbstract {
 			return $content;
 		}
 
+		$flag_redirect      = ( $settings[ HtaccessRewriteFlagRedirectOption::OPTION_NAME ] === 'yes' ) ? ',R=302' : '';
 		$document_root      = PathsGenerator::get_rewrite_root();
 		$root_suffix        = PathsGenerator::get_rewrite_path();
 		$root_suffix_output = apply_filters( 'webpc_htaccess_rewrite_output', $root_suffix, $document_root );
@@ -299,7 +301,7 @@ class HtaccessLoader extends LoaderAbstract {
 				if ( apply_filters( 'webpc_htaccess_mod_rewrite_referer', false ) === true ) {
 					$content .= "  RewriteCond %{HTTP_HOST}@@%{HTTP_REFERER} ^([^@]*)@@https?://\\1/.*" . PHP_EOL;
 				}
-				$content .= "  RewriteRule {$output_parent}(.+)\.{$ext}$ {$root_suffix_output}{$output_path}/$1.{$ext}.{$format} [NC,T={$mime_type},L]" . PHP_EOL;
+				$content .= "  RewriteRule {$output_parent}(.+)\.{$ext}$ {$root_suffix_output}{$output_path}/$1.{$ext}.{$format} [NC,T={$mime_type},L{$flag_redirect}]" . PHP_EOL;
 			}
 		}
 

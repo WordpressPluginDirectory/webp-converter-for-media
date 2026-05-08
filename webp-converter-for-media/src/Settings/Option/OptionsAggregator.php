@@ -51,6 +51,7 @@ class OptionsAggregator {
 		$this->set_option( new HtaccessRewritePathOption() );
 		$this->set_option( new HtaccessRewriteParentOption() );
 		$this->set_option( new HtaccessRewriteOutputOption() );
+		$this->set_option( new HtaccessRewriteFlagRedirectOption() );
 	}
 
 	/**
