@@ -123,6 +123,7 @@ return array(
     'WebpConverter\\Loader\\LoaderIntegrator' => $baseDir . '/src/Loader/LoaderIntegrator.php',
     'WebpConverter\\Loader\\LoaderInterface' => $baseDir . '/src/Loader/LoaderInterface.php',
     'WebpConverter\\Loader\\PassthruLoader' => $baseDir . '/src/Loader/PassthruLoader.php',
+    'WebpConverter\\Model\\DebugCurl' => $baseDir . '/src/Model/DebugCurl.php',
     'WebpConverter\\Model\\Token' => $baseDir . '/src/Model/Token.php',
     'WebpConverter\\Notice\\BlackFridayNotice' => $baseDir . '/src/Notice/BlackFridayNotice.php',
     'WebpConverter\\Notice\\CloudflareNotice' => $baseDir . '/src/Notice/CloudflareNotice.php',
