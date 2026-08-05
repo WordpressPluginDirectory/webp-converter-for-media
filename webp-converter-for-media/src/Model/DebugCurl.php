@@ -18,14 +18,15 @@ class DebugCurl {
 	private ?string $curl_error = null;
 
 	/**
-	 * @param resource|null $curl_handle .
+	 * @param resource|null $curl_handle   .
+	 * @param string|null   $curl_response .
 	 */
-	public function __construct( $curl_handle ) {
+	public function __construct( $curl_handle, ?string $curl_response = null ) {
 		if ( $curl_handle === null ) {
 			return;
 		}
 
-		$this->response_length        = curl_getinfo( $curl_handle, CURLINFO_SIZE_DOWNLOAD_T );
+		$this->response_length        = ( $curl_response !== null ) ? strlen( $curl_response ) : 0;
 		$this->response_code          = curl_getinfo( $curl_handle, CURLINFO_HTTP_CODE );
 		$this->response_content_type  = curl_getinfo( $curl_handle, CURLINFO_CONTENT_TYPE ) ?: null;
 		$this->response_effective_url = curl_getinfo( $curl_handle, CURLINFO_EFFECTIVE_URL );

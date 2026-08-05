@@ -5,7 +5,7 @@ Tags: convert webp, webp, optimize images, image optimization, compress images
 Requires at least: 4.9
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 6.6.2
+Stable tag: 6.6.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -308,6 +308,12 @@ Current list of supported CDN servers:
 5. Ability to manually undo optimization of selected image
 
 == Changelog ==
+
+= 6.6.4 (2026-08-05) =
+* `[Fixed]` Fatal error during image conversion when encountering unhandled conversion errors
+
+= 6.6.3 (2026-08-03) =
+* `[Fixed]` Fatal error with undefined constant CURLINFO_SIZE_DOWNLOAD_T on old versions of cURL library
 
 = 6.6.2 (2026-07-17) =
 * `[Changed]` Error detection of non-working redirects

@@ -36,8 +36,8 @@ class FileLoader {
 			return new DebugCurl( null );
 		}
 
-		curl_exec( $connect );
-		$debug_file = new DebugCurl( $connect );
+		$response   = curl_exec( $connect );
+		$debug_file = new DebugCurl( $connect, ( is_string( $response ) ? $response : null ) );
 
 		if ( $debug_context !== null ) {
 			$this->log_request( $debug_context, $request_url, $set_webp_header, $debug_file );
