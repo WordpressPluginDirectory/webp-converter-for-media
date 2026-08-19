@@ -53,10 +53,9 @@ class CloudflareConfigurator implements HookableInterface {
 	}
 
 	/**
-	 * @return bool
 	 * @internal
 	 */
-	public function set_cache_config(): bool {
+	public function set_cache_config(): void {
 		$this->send_request( self::API_CACHE_CONFIG_URL, 'DELETE' );
 
 		$response_code = $this->send_request(
@@ -73,22 +72,19 @@ class CloudflareConfigurator implements HookableInterface {
 			]
 		);
 		if ( $response_code === null ) {
-			return false;
+			return;
 		}
 
 		OptionsAccessManager::update_option(
 			self::REQUEST_CACHE_CONFIG_OPTION,
 			( $response_code === 200 ) ? 'yes' : $response_code
 		);
-
-		return ( $response_code === 200 );
 	}
 
 	/**
-	 * @return bool
 	 * @internal
 	 */
-	public function purge_cache(): bool {
+	public function purge_cache(): void {
 		$response_code = $this->send_request(
 			self::API_CACHE_PURGE_URL,
 			'POST',
@@ -97,15 +93,13 @@ class CloudflareConfigurator implements HookableInterface {
 			]
 		);
 		if ( $response_code === null ) {
-			return false;
+			return;
 		}
 
 		OptionsAccessManager::update_option(
 			self::REQUEST_CACHE_PURGE_OPTION,
 			( $response_code === 200 ) ? 'yes' : $response_code
 		);
-
-		return ( $response_code === 200 );
 	}
 
 	/**
